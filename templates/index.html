@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Wi-Fi QR Code Generator</title>
+</head>
+
+<body>
+
+    <h1>Wi-Fi QR Code Generator</h1>
+
+    <form method="POST">
+
+        <div>
+            <label>Wi-Fi Name</label>
+            <input
+                type="text"
+                name="wifi_name"
+                placeholder="Enter Wi-Fi name"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label>Wi-Fi Password</label>
+            <input
+                type="password"
+                name="wifi_password"
+                placeholder="Enter Wi-Fi password"
+                required
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label>Security</label>
+
+            <select name="security">
+
+                <option value="WPA">
+                    WPA / WPA2 / WPA3
+                </option>
+
+                <option value="WEP">
+                    WEP
+                </option>
+
+                <option value="nopass">
+                    No Password
+                </option>
+
+            </select>
+
+        </div>
+
+        <br>
+
+        <button type="submit">
+            Generate QR Code
+        </button>
+
+    </form>
+
+
+    {% if qr_code %}
+
+        <hr>
+
+        <h2>Your Wi-Fi QR Code</h2>
+
+        <img
+            src="{{ url_for(
+                'static',
+                filename='generated/' + qr_code
+            ) }}"
+            width="300"
+        >
+
+        <br><br>
+
+        <a
+            href="{{ url_for(
+                'static',
+                filename='generated/' + qr_code
+            ) }}"
+            download="wifi_qrcode.png"
+        >
+            Download QR Code
+        </a>
+
+    {% endif %}
+
+
+</body>
+
+</html>
