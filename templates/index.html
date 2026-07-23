@@ -1,103 +1,207 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+```
+<meta charset="UTF-8">
 
-    <title>Wi-Fi QR Code Generator</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Wi-Fi QR Code Generator</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+```
+
 </head>
 
-<body>
+<body class="bg-stone-100 min-h-screen">
 
-    <h1>Wi-Fi QR Code Generator</h1>
+```
+<div class="min-h-screen flex items-center justify-center p-6">
 
-    <form method="POST">
 
-        <div>
-            <label>Wi-Fi Name</label>
-            <input
-                type="text"
-                name="wifi_name"
-                placeholder="Enter Wi-Fi name"
-                required
+    <div
+        class="bg-white
+               w-full
+               max-w-lg
+               rounded-2xl
+               shadow-xl
+               p-8"
+    >
+
+
+        <!-- Header -->
+
+        <div class="text-center mb-8">
+
+            <h1
+                class="text-3xl
+                       font-bold
+                       text-stone-800"
             >
+                Wi-Fi QR Code Generator
+            </h1>
+
+            <p class="text-stone-500 mt-2">
+                Create a QR code that lets guests
+                connect to your Wi-Fi instantly.
+            </p>
+
         </div>
 
-        <br>
 
-        <div>
-            <label>Wi-Fi Password</label>
-            <input
-                type="password"
-                name="wifi_password"
-                placeholder="Enter Wi-Fi password"
-                required
+        <!-- Form -->
+
+        <form method="POST" class="space-y-6">
+
+
+            <!-- Wi-Fi Name -->
+
+            <div>
+
+                <label
+                    class="block
+                           text-sm
+                           font-medium
+                           text-stone-700
+                           mb-2"
+                >
+                    Wi-Fi Network Name
+                </label>
+
+                <input
+                    type="text"
+                    name="wifi_name"
+                    placeholder="e.g. My Home WiFi"
+                    required
+
+                    class="w-full
+                           px-4
+                           py-3
+                           border
+                           border-stone-300
+                           rounded-xl
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-emerald-500
+                           focus:border-emerald-500"
+                >
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div>
+
+                <label
+                    class="block
+                           text-sm
+                           font-medium
+                           text-stone-700
+                           mb-2"
+                >
+                    Wi-Fi Password
+                </label>
+
+                <input
+                    type="password"
+                    name="wifi_password"
+                    placeholder="Enter Wi-Fi password"
+                    required
+
+                    class="w-full
+                           px-4
+                           py-3
+                           border
+                           border-stone-300
+                           rounded-xl
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-emerald-500
+                           focus:border-emerald-500"
+                >
+
+            </div>
+
+
+            <!-- Security -->
+
+            <div>
+
+                <label
+                    class="block
+                           text-sm
+                           font-medium
+                           text-stone-700
+                           mb-2"
+                >
+                    Security Type
+                </label>
+
+                <select
+                    name="security"
+
+                    class="w-full
+                           px-4
+                           py-3
+                           border
+                           border-stone-300
+                           rounded-xl
+                           bg-white
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-emerald-500
+                           focus:border-emerald-500"
+                >
+
+                    <option value="WPA">
+                        WPA / WPA2 / WPA3
+                    </option>
+
+                    <option value="WEP">
+                        WEP
+                    </option>
+
+                    <option value="nopass">
+                        No Password
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Generate -->
+
+            <button
+                type="submit"
+
+                class="w-full
+                       bg-emerald-700
+                       hover:bg-emerald-800
+                       text-white
+                       font-semibold
+                       py-3
+                       rounded-xl
+                       transition"
             >
-        </div>
-
-        <br>
-
-        <div>
-            <label>Security</label>
-
-            <select name="security">
-
-                <option value="WPA">
-                    WPA / WPA2 / WPA3
-                </option>
-
-                <option value="WEP">
-                    WEP
-                </option>
-
-                <option value="nopass">
-                    No Password
-                </option>
-
-            </select>
-
-        </div>
-
-        <br>
-
-        <button type="submit">
-            Generate QR Code
-        </button>
-
-    </form>
+                Generate Wi-Fi QR Code
+            </button>
 
 
-    {% if qr_code %}
+        </form>
 
-        <hr>
 
-        <h2>Your Wi-Fi QR Code</h2>
+    </div>
 
-        <img
-            src="{{ url_for(
-                'static',
-                filename='generated/' + qr_code
-            ) }}"
-            width="300"
-        >
-
-        <br><br>
-
-        <a
-            href="{{ url_for(
-                'static',
-                filename='generated/' + qr_code
-            ) }}"
-            download="wifi_qrcode.png"
-        >
-            Download QR Code
-        </a>
-
-    {% endif %}
-
+</div>
+```
 
 </body>
 

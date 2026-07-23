@@ -4,10 +4,9 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
-
-    qr_code = None
 
     if request.method == "POST":
 
@@ -24,6 +23,7 @@ def index():
         qr = qrcode.make(wifi_data)
 
         filename = "wifi_qrcode.png"
+
         filepath = os.path.join(
             "static",
             "generated",
@@ -32,12 +32,15 @@ def index():
 
         qr.save(filepath)
 
-        qr_code = filename
+        return render_template(
+            "result.html",
+            wifi_name=wifi_name,
+            wifi_password=wifi_password,
+            security=security,
+            qr_code=filename
+        )
 
-    return render_template(
-        "index.html",
-        qr_code=qr_code
-    )
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
