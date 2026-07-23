@@ -59,8 +59,7 @@ wifi-qrcode-generator/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/wifi-qrcode-generator.git
-```
+git clone https://github.com/BlackCoder56/wifi-qrcode-generator.git
 
 Navigate into the project:
 
